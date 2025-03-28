@@ -70,6 +70,7 @@ button:hover {
 }
 
 footer {
+    margin-top: 30px;
     background-color: var(--color-0);
     padding: 10px;
     position: sticky;
@@ -96,7 +97,7 @@ footer {
     border-radius: 8px;
 }
 
-.card > img {
+.card>img {
     width: 220px;
     border-radius: 8px 0px 0 8px;
 }
@@ -105,7 +106,23 @@ footer {
     padding: 10px;
 }
 
-.card-data > * {
+.card-data>* {
     margin: 0;
     margin-bottom: 5px;
+}
+
+
+@media screen and (max-width: 700px) {
+    .card {
+        flex-direction: column;
+        flex-wrap: wrap;
+
+        width: 90%;
+        height: max-content;
+    }
+
+    .card>img {
+        width: 100%;
+        border-radius: 8px 8px 0px 0px;
+    }
 }
