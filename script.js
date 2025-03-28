@@ -77,6 +77,24 @@ function display(page) {
         name.innerText = element.name;
         cardData.appendChild(name);
 
+        const status = document.createElement('p');
+        status.innerText = element.status + " - " + element.species;
+        cardData.appendChild(status);
+
+        const grey1 = document.createElement('p')
+        grey1.className = 'grey';
+        grey1.innerText = 'Last known location: ';
+        cardData.appendChild(grey1)
+
+        const origin = document.createElement('p')
+        origin.innerText = element.origin.name;
+        cardData.appendChild(origin)
+
+        const grey2 = document.createElement('p')
+        grey2.className = 'grey';
+        grey2.innerText = 'First seen in: ';
+        cardData.appendChild(grey2)
+
         card.appendChild(cardData);
         div.appendChild(card)
     });
