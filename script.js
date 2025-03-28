@@ -95,6 +95,9 @@ function display(page) {
 
         const name = document.createElement('h2');
         name.innerText = element.name;
+        name.onclick = () => {
+            randomCharacter.openCharacterDetails(api, element.id);
+        };
         cardData.appendChild(name);
 
         const status = document.createElement('p');

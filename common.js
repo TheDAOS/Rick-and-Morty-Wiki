@@ -24,8 +24,17 @@ let randomCharacter = {
     character: null,
     run: async function () {
         await this.getCharacterURL();
-        window.location.href = 'character.html';
+        this.redirectToCharacter();
         await this.fetchCharacterData();
+    },
+    openCharacterDetails: async function (url, id) {
+        this.characterURL = url + '/' + id;
+        this.redirectToCharacter();
+        await this.fetchCharacterData();
+        console.log(this.character);
+    },
+    redirectToCharacter: function () {
+        window.location.href = 'character.html';
     },
     fetchCharacterData: async function () {
         try {
