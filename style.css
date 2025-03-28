@@ -141,7 +141,7 @@ footer {
 @media screen and (max-width: 700px) {
     header {
         position: -webkit-sticky; /* For Safari */
-        top: -145px;
+        top: -95px;
     }
 
     nav {
