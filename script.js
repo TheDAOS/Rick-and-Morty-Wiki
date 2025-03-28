@@ -18,9 +18,24 @@ let pageControl = {
     }
 }
 
-
 document.body.onload = () => {
     pageControl.showPage();
+}
+
+async function getData() {
+    try {
+        if (api) {
+            const response = await fetch(api);
+            const data = await response.json();
+
+            api = data.info.next;
+            // console.log("fetch ", data.results);
+            return data.results;
+        }
+    } catch (error) {
+        console.log(error);
+    }
+    return [];
 }
 
 async function loadPage(page) {
@@ -48,28 +63,11 @@ async function loadPage(page) {
     display(page);
 }
 
-async function getData() {
-    try {
-        if (api) {
-            const response = await fetch(api);
-            const data = await response.json();
-
-            api = data.info.next;
-            // console.log("fetch ", data.results);
-            return data.results;
-        }
-    } catch (error) {
-        console.log(error);
-    }
-    return [];
-}
-
-
 function display(page) {
     const div = document.getElementById('displayCharacter');
     div.innerHTML = '';
     // console.log(pagedData[page]);
-    
+
     pagedData[page].forEach(element => {
         // console.log(element);
         const card = document.createElement('div');
