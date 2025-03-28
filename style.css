@@ -1,5 +1,5 @@
 :root {
-    --text: ghostwhite;
+    /* --text: ghostwhite; */
     --text: black;
 
     --color-0: #AFD75C;
@@ -94,6 +94,7 @@ footer {
     /* padding: 2px; */
     width:fit-content;
     /* color: var(--color-0); */
+    /* color: var(--color-1); */
     color: var(--color-3);
     display: flex;
     gap: 10px;
