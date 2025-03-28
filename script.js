@@ -13,6 +13,7 @@ let pageControl = {
     },
     showPage: async function () {
         await loadPage(this.page);
+        window.scrollTo(300, 0);
     },
     previousPage: async function () {
         if (this.page > 0) {
@@ -131,7 +132,7 @@ function clock() {
     let time = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
     const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const months = [
-        "January", "February", "March", "April", "May", "June", 
+        "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
 
