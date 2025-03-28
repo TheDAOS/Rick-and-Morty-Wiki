@@ -17,3 +17,66 @@ if (localStorage.getItem('mode') === "Light Mode") {
     document.getElementById('mode').innerText = 'Light Mode';
     document.documentElement.style.setProperty('--color-3', 'ghostwhite');
 }
+
+let randomCharacter = {
+    url: 'https://rickandmortyapi.com/api/character',
+    characterURL: '',
+    character: null,
+    run: async function () {
+        await this.getCharacterURL();
+        window.location.href = 'character.html';
+        await this.fetchCharacterData();
+    },
+    fetchCharacterData: async function () {
+        try {
+            const response = await fetch(this.characterURL);
+            const data = await response.json();
+
+            this.character = data;
+            // console.log(this.character);
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    getCharacterURL: async function () {
+        const id = await this.getRandomCharacterID();
+        this.characterURL = this.url + '/' + id;
+    },
+    getRandomCharacterID: async function () {
+        const max = await getTotalCharacters(this.url);
+        const random = Math.floor(Math.random() * (max - 1 + 1)) + 1;
+        // console.log(random);
+        return random;
+
+        async function getTotalCharacters(url) {
+            try {
+                const response = await fetch(url)
+                const data = await response.json();
+
+                return data.info.count;
+            } catch (error) {
+                console.log(error);
+            }
+            return 1;
+        }
+    },
+
+}
+
+function clock() {
+    const now = new Date();
+    let time = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
+    const weekDays = [
+        'Sunday', 'Monday', 'Tuesday',
+        'Wednesday', 'Thursday', 'Friday', 'Saturday'
+    ];
+    const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    time += " " + `${weekDays[now.getDay()]} ${months[now.getMonth()]} ${now.getDate()} ${now.getFullYear()}`
+    document.getElementById('footer').innerText = time;
+}
+
+setInterval(clock, 1000);
