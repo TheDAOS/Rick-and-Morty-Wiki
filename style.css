@@ -24,11 +24,17 @@ body {
     min-height: 100vh;
 }
 
+header {
+    position: sticky;
+    top: 0px;
+}
+
 nav {
     /* background-color: var(--color-0); */
+    background-color: var(--color-3);
     padding: 10px;
     position: sticky;
-    top: 0;
+    top: 0px;
 
     display: flex;
     flex-wrap: wrap;
