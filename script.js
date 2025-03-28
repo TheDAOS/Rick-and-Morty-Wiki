@@ -64,8 +64,15 @@ async function loadPage(page) {
 }
 
 function display(page) {
+    document.getElementById('showPageNo').innerText = page+1;
     const div = document.getElementById('displayCharacter');
     div.innerHTML = '';
+    // div.innerHTML = `
+    // <div class="pageControlContainer">
+    //     <button type="button" onclick="pageControl.previousPage()">Previous</button>
+    //     ${pageControl.page+1}
+    //     <button type="button" onclick="pageControl.nextPage()">Next</button>
+    // </div >`;
     // console.log(pagedData[page]);
 
     pagedData[page].forEach(element => {

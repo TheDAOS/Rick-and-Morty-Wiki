@@ -77,6 +77,18 @@ footer {
     top: 100%;
 }
 
+.pageControlContainer {
+    /* background-color: var(--color-0); */
+    /* border-radius: 8px; */
+    /* padding: 2px; */
+    /* width:auto; */
+    color: var(--color-0);
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .cardDIV {
     display: flex;
     justify-content: center;
