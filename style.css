@@ -34,6 +34,7 @@ nav {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
 
     border-bottom: 2px solid #AFD75C;
     margin-bottom: 30px;
@@ -78,11 +79,12 @@ footer {
 }
 
 .pageControlContainer {
-    /* background-color: var(--color-0); */
-    /* border-radius: 8px; */
+    background-color: var(--color-0);
+    border-radius: 8px;
     /* padding: 2px; */
     /* width:auto; */
-    color: var(--color-0);
+    /* color: var(--color-0); */
+    color: var(--color-3);
     display: flex;
     gap: 10px;
     justify-content: flex-start;
@@ -130,6 +132,12 @@ footer {
 
 
 @media screen and (max-width: 700px) {
+    nav {
+        flex-direction: column;
+    }
+    nav > div {
+        flex-direction: column;
+    }
     .card {
         flex-direction: column;
         flex-wrap: wrap;
