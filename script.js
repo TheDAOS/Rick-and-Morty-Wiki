@@ -5,21 +5,32 @@ let pagedData = [];
 
 let pageControl = {
     page: 0,
+    maxPages: 0,
+    getMaxPage: async function () {
+        const response = await fetch(api);
+        const data = await response.json();
+        this.maxPages = Math.ceil(data.info.count / 6);
+    },
     showPage: async function () {
         await loadPage(this.page);
     },
-    nextPage: async function () {
-        this.page++;
-        await this.showPage();
-    },
     previousPage: async function () {
-        this.page--;
-        await this.showPage();
-    }
+        if (this.page > 0) {
+            this.page--;
+            await this.showPage();
+        }
+    },
+    nextPage: async function () {
+        if (this.page <= this.maxPages) {
+            this.page++;
+            await this.showPage();
+        }
+    },
 }
 
 document.body.onload = () => {
     pageControl.showPage();
+    pageControl.getMaxPage();
 }
 
 async function getData() {
@@ -64,16 +75,9 @@ async function loadPage(page) {
 }
 
 function display(page) {
-    document.getElementById('showPageNo').innerText = page+1;
+    document.getElementById('showPageNo').innerText = page + 1;
     const div = document.getElementById('displayCharacter');
     div.innerHTML = '';
-    // div.innerHTML = `
-    // <div class="pageControlContainer">
-    //     <button type="button" onclick="pageControl.previousPage()">Previous</button>
-    //     ${pageControl.page+1}
-    //     <button type="button" onclick="pageControl.nextPage()">Next</button>
-    // </div >`;
-    // console.log(pagedData[page]);
 
     pagedData[page].forEach(element => {
         // console.log(element);
