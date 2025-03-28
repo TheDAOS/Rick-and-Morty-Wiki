@@ -2,23 +2,29 @@ let characterData = [];
 let api = `https://rickandmortyapi.com/api/character`;
 
 let pagedData = [];
-let currentPage = 0;
 
-
-document.body.onload = async () => {
-    await loadPage(currentPage);
-    display(currentPage);
+let pageControl = {
+    page: 0,
+    showPage: async function () {
+        await loadPage(this.page);
+    },
+    nextPage: async function () {
+        this.page++;
+        await this.showPage();
+    },
+    previousPage: async function () {
+        this.page--;
+        await this.showPage();
+    }
 }
-console.log(pagedData);
 
-// loadPage(0);
-// loadPage(1);
-// loadPage(2);
-// loadPage(3);
-// loadPage(4);
-// loadPage(5);
+
+document.body.onload = () => {
+    pageControl.showPage();
+}
 
 async function loadPage(page) {
+    // console.log(page);
     if (page % 4 === 0) {
         let newData = [];
         for (let i = 0; i < 3; i++) {
@@ -36,8 +42,10 @@ async function loadPage(page) {
                 pagedData.push([characterData[i]])
             }
         }
-        console.log(pagedData);
+        // console.log(pagedData);
     }
+    // console.log(page);
+    display(page);
 }
 
 async function getData() {
@@ -59,9 +67,11 @@ async function getData() {
 
 function display(page) {
     const div = document.getElementById('displayCharacter');
-
+    div.innerHTML = '';
+    // console.log(pagedData[page]);
+    
     pagedData[page].forEach(element => {
-        console.log(element);
+        // console.log(element);
         const card = document.createElement('div');
         card.className = 'card';
 
@@ -72,7 +82,7 @@ function display(page) {
 
         const cardData = document.createElement('div');
         cardData.className = 'card-data';
-        
+
         const name = document.createElement('h2');
         name.innerText = element.name;
         cardData.appendChild(name);
@@ -94,6 +104,13 @@ function display(page) {
         grey2.className = 'grey';
         grey2.innerText = 'First seen in: ';
         cardData.appendChild(grey2)
+
+        const firstSeen = document.createElement('p');
+        fetch(element.episode[0])
+            .then(response => response.json())
+            .then(data => firstSeen.innerText = data.name)
+            .catch(error => firstSeen.innerText = "Unknown")
+        cardData.appendChild(firstSeen)
 
         card.appendChild(cardData);
         div.appendChild(card)
