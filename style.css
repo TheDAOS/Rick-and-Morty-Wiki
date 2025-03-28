@@ -1,0 +1,76 @@
+:root {
+    --text: ghostwhite;
+    --text: black;
+
+    --color-0: #AFD75C;
+    --color-1: rgb(2,175,197);
+    --color-3: #000E0F;
+}
+
+html,
+body {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    background-color: var(--color-3);
+    background-image: url('image/Rick_And_Morty_\(1\).svg');
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+
+    color: var(--text);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    min-height: 100vh;
+}
+
+nav {
+    /* background-color: var(--color-0); */
+    padding: 10px;
+    position: sticky;
+    top: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 2px solid #AFD75C;
+}
+
+nav > img {
+    height: 32px;
+}
+
+nav > * {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+button {
+    background-color: var(--color-3);
+    font-family: inherit;
+    font-weight: bold;
+    border: 2px solid var(--color-0);
+    border-radius: 8px;
+    color: var(--color-1);
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--color-0);
+    color: var(--color-3);
+    border: 2px solid var(--color-1);
+    text-decoration-thickness: 2px;
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-1);
+}
+
+footer {
+    background-color: var(--color-0);
+    padding: 10px;
+    position: sticky;
+    top: 100%;
+}
