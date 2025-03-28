@@ -91,12 +91,13 @@ footer {
     background-color: var(--color-0);
     border-radius: 8px;
     /* padding: 2px; */
-    /* width:auto; */
+    width:fit-content;
     /* color: var(--color-0); */
     color: var(--color-3);
     display: flex;
     gap: 10px;
-    justify-content: flex-start;
+    margin: auto;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -109,11 +110,9 @@ footer {
     /* margin: auto; */
 }
 
-
 .card {
     background-color: var(--color-0);
     display: flex;
-
 
     width: 600px;
     height: 220px;
@@ -139,18 +138,20 @@ footer {
     font-style: italic;
 }
 
-
 @media screen and (max-width: 700px) {
     header {
         position: -webkit-sticky; /* For Safari */
         top: -145px;
     }
+
     nav {
         flex-direction: column;
     }
+
     nav > div {
         flex-direction: column;
     }
+
     .card {
         flex-direction: column;
         flex-wrap: wrap;
