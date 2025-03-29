@@ -18,7 +18,7 @@ To set up the Rick and Morty Wiki locally, follow these steps:
        cd Rick-and-Morty-Wiki
     ```
 - live Server:  
-    Use any preferred live server and open `index.html` in live server
+    Use any preferred live server and open `index.html` in the live server
 
 ## Screenshots
 
@@ -34,5 +34,10 @@ To set up the Rick and Morty Wiki locally, follow these steps:
 #### Character page Light Mode
 ![character_light](screenshots/character_light.png)
 
-## Any challenges faced and how you overcame them
- - 
+## challenges
+
+- **API Data Management:** 
+    The API provides 20 character data points per call, but I only need 6 per page. This required calling the API multiple times and managing the data to populate 10 pages.
+
+- **Data Transfer Between Pages:** 
+    There was some decision-making paralysis regarding how to send chosen character data from the home page to the character page. After considering various factors, I decided to use localStorage for sending data to the character page.
