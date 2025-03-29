@@ -23,17 +23,13 @@ let randomCharacter = {
     characterURL: '',
     character: null,
     sendCharacterDetails: async function (id = null) {
-        if (!this.characterURL) {
-            await this.getCharacterURL();
-        } else {
+        if (id) {
             this.characterURL = this.url + '/' + id;
+        } else {
+            await this.getCharacterURL();
         }
         localStorage.setItem('characterURL', this.characterURL);
         this.redirectToCharacter();
-    },
-    randomCharacterButton: async function () {
-        await this.getCharacterURL();
-        await this.fetchCharacterData();
     },
     receiveCharacterDetails: async function () {
         this.characterURL = localStorage.getItem('characterURL')
@@ -41,6 +37,13 @@ let randomCharacter = {
             await this.getCharacterURL();
         }
         await this.fetchCharacterData();
+        this.displayCharacterData();
+    },
+    randomCharacterButton: async function () {
+        await this.getCharacterURL();
+        localStorage.setItem('characterURL', this.characterURL);
+        await this.fetchCharacterData();
+        this.displayCharacterData();
     },
     redirectToCharacter: function () {
         window.location.href = 'character.html';
@@ -78,7 +81,27 @@ let randomCharacter = {
             return 1;
         }
     },
+    displayCharacterData: async function () {
+        const div = document.getElementById('displayCharacter');
+        div.innerHTML = '';
+        const card = document.createElement('div');
+        card.className = 'character-card';
 
+
+        const image = document.createElement('img');
+        image.src = this.character.image;
+        image.alt = this.character.name;
+        image.style.borderRadius = '8px';
+        card.appendChild(image)
+
+        const name = document.createElement('h2');
+        name.innerText = this.character.name;
+        card.appendChild(name)
+
+
+
+        div.appendChild(card);
+    }
 }
 
 function clock() {

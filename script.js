@@ -84,6 +84,9 @@ function display(page) {
         // console.log(element);
         const card = document.createElement('div');
         card.className = 'card';
+        card.onclick = () => {
+            randomCharacter.sendCharacterDetails(element.id);
+        };
 
         const image = document.createElement('img');
         image.src = element.image;
@@ -95,9 +98,7 @@ function display(page) {
 
         const name = document.createElement('h2');
         name.innerText = element.name;
-        name.onclick = () => {
-            randomCharacter.sendCharacterDetails(element.id);
-        };
+
         cardData.appendChild(name);
 
         const status = document.createElement('p');
