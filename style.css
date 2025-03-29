@@ -157,6 +157,35 @@ footer {
     max-width: 1820px;
 }
 
+/* .character-card>img {
+    height: 220px;
+    width: 220px;
+} */
+
+.character-card>* {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.episodes {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* padding: 10px; */
+}
+
+.episode {
+    border: 2px solid var(--color-1);
+    background-color: var(--color-3);
+    color: var(--color-0);
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration-thickness: 2px;
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-1);
+}
+
 @media screen and (max-width: 700px) {
     header {
         top: -95px;

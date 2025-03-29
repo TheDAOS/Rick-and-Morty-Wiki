@@ -105,8 +105,52 @@ let randomCharacter = {
         species.innerText = "Species: " + this.character.species;
         card.appendChild(species)
 
-        type
-        gender
+        const type = document.createElement('div');
+        type.innerText = "Type: " + (this.character.type || "Unknown");
+        card.appendChild(type)
+
+        const gender = document.createElement('div');
+        gender.innerText = "Gender: " + this.character.gender;
+        card.appendChild(gender)
+
+        const origin = document.createElement('div');
+        origin.innerText = "Origin: " + this.character.origin.name;
+        card.appendChild(origin)
+
+        const location = document.createElement('div');
+        location.innerText = "Location: " + this.character.location.name;
+        card.appendChild(location)
+
+        const episodesLabel = document.createElement('div');
+        episodesLabel.innerText = "Episodes: "
+        card.appendChild(episodesLabel);
+
+        const episodes = document.createElement('div');
+        episodes.className = 'episodes';
+        this.character.episode.forEach(epi => {
+            const episode = document.createElement('div');
+            episode.className = 'episode';
+
+            fetch(epi)
+                .then(response => response.json())
+                .then(data => {
+                    const episodeName = document.createElement('p');
+                    episodeName.innerText = "Episode name: " + data.name;
+                    episode.appendChild(episodeName)
+
+                    const air_date = document.createElement('p');
+                    air_date.innerText = "Air Date: " + data.air_date;
+                    episode.appendChild(air_date)
+
+                    const seasonAndEpisode = document.createElement('p');
+                    seasonAndEpisode.innerText = "Episode: " + data.episode;
+                    episode.appendChild(seasonAndEpisode)
+                })
+
+
+            episodes.appendChild(episode)
+        });
+        card.appendChild(episodes);
 
         div.appendChild(card);
     }
