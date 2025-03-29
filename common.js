@@ -87,7 +87,6 @@ let randomCharacter = {
         const card = document.createElement('div');
         card.className = 'character-card';
 
-
         const image = document.createElement('img');
         image.src = this.character.image;
         image.alt = this.character.name;
@@ -95,10 +94,19 @@ let randomCharacter = {
         card.appendChild(image)
 
         const name = document.createElement('h2');
-        name.innerText = this.character.name;
+        name.innerText = "Name: " + this.character.name;
         card.appendChild(name)
 
+        const status = document.createElement('div');
+        status.innerText = "Status: " + this.character.status;
+        card.appendChild(status)
 
+        const species = document.createElement('div');
+        species.innerText = "Species: " + this.character.species;
+        card.appendChild(species)
+
+        type
+        gender
 
         div.appendChild(card);
     }

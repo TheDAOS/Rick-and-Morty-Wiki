@@ -48,6 +48,7 @@ nav {
 
 nav>img {
     height: 32px;
+    cursor: pointer;
 }
 
 nav>* {
@@ -120,6 +121,7 @@ footer {
     width: 600px;
     height: 220px;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .card>img {
