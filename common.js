@@ -22,16 +22,25 @@ let randomCharacter = {
     url: 'https://rickandmortyapi.com/api/character',
     characterURL: '',
     character: null,
-    run: async function () {
-        await this.getCharacterURL();
+    sendCharacterDetails: async function (id = null) {
+        if (!this.characterURL) {
+            await this.getCharacterURL();
+        } else {
+            this.characterURL = this.url + '/' + id;
+        }
+        localStorage.setItem('characterURL', this.characterURL);
         this.redirectToCharacter();
+    },
+    randomCharacterButton: async function () {
+        await this.getCharacterURL();
         await this.fetchCharacterData();
     },
-    openCharacterDetails: async function (url, id) {
-        this.characterURL = url + '/' + id;
-        this.redirectToCharacter();
+    receiveCharacterDetails: async function () {
+        this.characterURL = localStorage.getItem('characterURL')
+        if (!this.characterURL) {
+            await this.getCharacterURL();
+        }
         await this.fetchCharacterData();
-        console.log(this.character);
     },
     redirectToCharacter: function () {
         window.location.href = 'character.html';
@@ -42,7 +51,7 @@ let randomCharacter = {
             const data = await response.json();
 
             this.character = data;
-            // console.log(this.character);
+            console.log(this.character);
         } catch (error) {
             console.log(error);
         }

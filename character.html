@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body onload="randomCharacter.receiveCharacterDetails()">
     <header>
         <nav>
             <img src="image/Rick_And_Morty_(2).svg" alt="Rick And Morty">
 
             <div>
-                <button type="button" onclick="randomCharacter.run()">Random Character</button>
+                <button type="button" onclick="randomCharacter.randomCharacterButton()">Random Character</button>
                 <button type="button" id="mode" onclick="darkMode()">Dark Mode</button>
             </div>
         </nav>
